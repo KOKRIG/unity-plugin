@@ -1,0 +1,50 @@
+name: Build Unity Package
+
+on:
+  push:
+    branches: [main]
+    tags:
+      - 'v*'
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Generate meta file list
+        run: |
+          echo "Assets/Deffatest.meta" > metaList
+          find Assets/Deffatest -name "*.meta" >> metaList
+          echo "--- Meta files to include ---"
+          cat metaList
+
+      - name: Create output directory
+        run: mkdir -p output
+
+      - name: Create Unity Package
+        uses: pCYSl5EDgo/create-unitypackage@master
+        with:
+          package-path: 'output/Deffatest_v1.0.0.unitypackage'
+          include-files: metaList
+
+      - name: Upload Package Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Deffatest-Unity-Plugin
+          path: output/Deffatest_v1.0.0.unitypackage
+          retention-days: 90
+
+      - name: Create Release (on tag)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: output/Deffatest_v1.0.0.unitypackage
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
