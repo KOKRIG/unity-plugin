@@ -19,8 +19,20 @@ jobs:
 
       - name: Generate meta file list
         run: |
+          # Create the meta list file with all .meta files
           echo "Assets/Deffatest.meta" > metaList
-          find Assets/Deffatest -name "*.meta" >> metaList
+          echo "Assets/Deffatest/Editor.meta" >> metaList
+          echo "Assets/Deffatest/Documentation.meta" >> metaList
+          echo "Assets/Deffatest/Resources.meta" >> metaList
+          echo "Assets/Deffatest/package.json.meta" >> metaList
+          echo "Assets/Deffatest/Editor/DeffatestSettings.cs.meta" >> metaList
+          echo "Assets/Deffatest/Editor/DeffatestAPIClient.cs.meta" >> metaList
+          echo "Assets/Deffatest/Editor/DeffatestWebSocketClient.cs.meta" >> metaList
+          echo "Assets/Deffatest/Editor/DeffatestEditorWindow.cs.meta" >> metaList
+          echo "Assets/Deffatest/Editor/DeffatestBuildPostProcessor.cs.meta" >> metaList
+          echo "Assets/Deffatest/Editor/DeffatestBuildUtility.cs.meta" >> metaList
+          echo "Assets/Deffatest/Editor/EditorCoroutineUtility.cs.meta" >> metaList
+          echo "Assets/Deffatest/Documentation/README.md.meta" >> metaList
           echo "--- Meta files to include ---"
           cat metaList
 
@@ -28,7 +40,7 @@ jobs:
         run: mkdir -p output
 
       - name: Create Unity Package
-        uses: pCYSl5EDgo/create-unitypackage@master
+        uses: pCYSl5EDgo/create-unitypackage@v1
         with:
           package-path: 'output/Deffatest_v1.0.0.unitypackage'
           include-files: metaList
