@@ -1,0 +1,45 @@
+{
+  "name": "com.deffatest.unity",
+  "version": "1.0.0",
+  "displayName": "Deffatest - AI Bug Detection",
+  "description": "Automated AI-powered bug detection for Unity games. Test your builds automatically and receive detailed bug reports with screenshots, reproduction steps, and severity classifications. Features real-time WebSocket updates, build pipeline integration, and support for Android, iOS, WebGL, and standalone platforms.",
+  "unity": "2020.3",
+  "unityRelease": "0f1",
+  "documentationUrl": "https://docs.deffatest.online/unity",
+  "changelogUrl": "https://github.com/deffatest/unity-plugin/blob/main/CHANGELOG.md",
+  "licensesUrl": "https://deffatest.online/terms",
+  "keywords": [
+    "testing",
+    "qa",
+    "quality-assurance",
+    "automation",
+    "ai",
+    "bug-detection",
+    "game-testing",
+    "automated-testing",
+    "deffatest",
+    "editor-tool"
+  ],
+  "author": {
+    "name": "Deffatest",
+    "email": "support@deffatest.online",
+    "url": "https://deffatest.online"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deffatest/unity-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/deffatest/unity-plugin/issues"
+  },
+  "dependencies": {},
+  "samples": [
+    {
+      "displayName": "Demo Scene",
+      "description": "A simple demo scene showing Deffatest integration",
+      "path": "Samples~/Demo"
+    }
+  ],
+  "hideInEditor": false,
+  "type": "tool"
+}
